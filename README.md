@@ -1,4 +1,4 @@
-# Vera message engine (magicpin AI challenge)
+# Vera message engine
 
 Production-style **FastAPI** bot with **`compose(category, merchant, trigger, customer?)`**: hybrid Groq + deterministic templates, exposed under **`/v1/*`** for the judge harness.
 
@@ -13,7 +13,6 @@ Production-style **FastAPI** bot with **`compose(category, merchant, trigger, cu
 
 ## Approach (summary)
 
-- **Hybrid composition:** [Groq](https://console.groq.com) `llama-3.3-70b-versatile` (primary) and `llama-3.1-8b-instant` (fallback), `temperature=0`, fixed **`LLM_SEED`** for repeatability. If the key is missing or the call fails, **`templates.py`** fallbacks run (no API required).
 - **Grounding:** **`signals.py`** builds a sorted **facts** object from the four contexts only—no invented numbers, offers, or citations.
 - **Playbooks:** **`playbooks.py`** dispatches by `trigger.kind` (send-as, CTA, must-include).
 - **Semantic firewall:** **`semantic_compat.py`** + **`hydration.py`** sanitize cross-domain triggers and keep merchant-grounded safe copy when wiring is wrong.
