@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: shivanshu-merchant-bot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /v1/healthz
+    envVars:
+      - key: LLM_PROVIDER
+        value: groq
+      - key: LLM_MODEL
+        value: openai/gpt-oss-120b
+      - key: LLM_FALLBACK_MODEL
+        value: qwen/qwen3.8-27b
+      - key: LLM_SEED
+        value: "20260426"
+      - key: LLM_TIMEOUT_SECONDS
+        value: "20"
+      - key: LLM_API_KEY
+        sync: false
+      - key: BOT_TEAM_NAME
+        value: Shivanshu Sharma
+      - key: BOT_TEAM_MEMBERS
+        value: Shivanshu Sharma
+      - key: BOT_MODEL
+        value: openai/gpt-oss-120b
+      - key: BOT_APPROACH
+        value: Hybrid Groq composer with deterministic templates, playbooks, and hydration fallbacks
+      - key: BOT_CONTACT_EMAIL
+        value: shivanshusharmasks@gmail.com
+      - key: BOT_VERSION
+        value: "1.0.0"
